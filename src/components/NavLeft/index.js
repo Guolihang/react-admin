@@ -1,17 +1,17 @@
-import React from 'react';
-import {Menu, Icon} from 'antd';
-import MenuConfig from '../../config/menuConfig.js';
-import './index.less';
+import React from 'react'
+import { Menu, Icon } from 'antd'
+import MenuConfig from '../../config/menuConfig.js'
+import './index.less'
 
-const SubMenu = Menu.SubMenu;
+const SubMenu = Menu.SubMenu
 
 export default class NavLeft extends React.Component {
   componentWillMount() {
-    const menuTreeNode = this.readerMenu(MenuConfig);
-    console.log(menuTreeNode);
+    const menuTreeNode = this.readerMenu(MenuConfig)
+    console.log(menuTreeNode)
     this.setState({
-      menuTreeNode,
-    });
+      menuTreeNode
+    })
   }
   // 递归菜单渲染
   readerMenu = data => {
@@ -21,11 +21,11 @@ export default class NavLeft extends React.Component {
           <SubMenu title={item.title} key={item.key}>
             {this.readerMenu(item.children)}
           </SubMenu>
-        );
+        )
       }
-      return <Menu.Item key={item.key}>{item.title}</Menu.Item>;
-    });
-  };
+      return <Menu.Item key={item.key}>{item.title}</Menu.Item>
+    })
+  }
   render() {
     return (
       <div>
@@ -35,6 +35,6 @@ export default class NavLeft extends React.Component {
         </div>
         <Menu theme="dark">{this.state.menuTreeNode}</Menu>
       </div>
-    );
+    )
   }
 }
